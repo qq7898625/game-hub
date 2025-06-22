@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>Game Hub</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(#f0f8ff, #e0ffff);
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      margin-top: 20px;
+    }
+    .lang-switch {
+      margin: 10px;
+    }
+    button {
+      margin: 10px;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      background-color: #4caf50;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .footer {
+      margin-top: 50px;
+      padding: 20px;
+      font-size: 14px;
+      background-color: #f1f1f1;
+    }
+    .footer a {
+      color: #4caf50;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    .page {
+      display: none;
+    }
+    .active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="title">🎮 游戏中心</h1>
+
+  <!-- 语言切换 -->
+  <div class="lang-switch">
+    <button onclick="switchLang('zh')">中文</button>
+    <button onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 首页内容 -->
+  <div id="page1" class="page active">
+    <div>
+      <button onclick="window.open('https://t.me/chiances')">🎲 游戏社区</button>
+      <button onclick="showPage(2)">🎯 游戏中心</button>
+    </div>
+
+    <div id="desc" style="margin: 20px;">
+      欢迎来到我们的游戏中心！点击上方按钮即可开始游戏。每款游戏都支持 Telegram 登录。我们将不定期举办排行榜挑战活动，欢迎关注频道获取奖励信息！
+    </div>
+
+    <button onclick="alert('排行榜功能即将上线，敬请期待！')">🏆 查看排行榜</button>
+  </div>
+
+  <!-- 第二页内容 -->
+  <div id="page2" class="page">
+    <h2>游戏中心 - 第二页内容</h2>
+    <p>这里是网页的第二页，你可以放更多游戏相关内容或介绍。</p>
+    <button onclick="showPage(1)">⬅ 返回首页</button>
+  </div>
+
+  <!-- 背景音乐 -->
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-funkyelement.mp3" type="audio/mpeg" />
+    您的浏览器不支持音频播放。
+  </audio>
+
+  <!-- 联系信息 -->
+  <div class="footer" id="contact">
+    联系我们：<br />
+    Telegram：@kkGitHubBot<br />
+    频道链接：<a href="https://t.me/chiances" target="_blank">https://t.me/chiances</a>
+  </div>
+
+  <script>
+    function switchLang(lang) {
+      if (lang === "en") {
+        document.getElementById("title").innerText = "🎮 Game Hub";
+        document.getElementById("desc").innerText =
+          "Welcome to our game hub! Click the button above to start playing. All games support Telegram login. Stay tuned to our channel for leaderboard events and rewards!";
+        document.querySelectorAll("#page1 button")[0].innerText = "🎲 Game Community";
+        document.querySelectorAll("#page1 button")[1].innerText = "🎯 Game Center";
+        document.querySelectorAll("#page1 button")[2].innerText = "🏆 View Leaderboard";
+        document.getElementById("contact").innerHTML = `
+          Contact us:<br/>
+          Telegram: @kkGitHubBot<br/>
+          Channel link: <a href="https://t.me/chiances" target="_blank">https://t.me/chiances</a>
+        `;
+        document.querySelector("#page2 h2").innerText = "Game Center - Second Page";
+        document.querySelector("#page2 p").innerText = "This is the second page where you can put more game-related content or introduction.";
+        document.querySelector("#page2 button").innerText = "⬅ Back to Home";
+      } else {
+        document.getElementById("title").innerText = "🎮 游戏中心";
+        document.getElementById("desc").innerText =
+          "欢迎来到我们的游戏中心！点击上方按钮即可开始游戏。每款游戏都支持 Telegram 登录。我们将不定期举办排行榜挑战活动，欢迎关注频道获取奖励信息！";
+        document.querySelectorAll("#page1 button")[0].innerText = "🎲 游戏社区";
+        document.querySelectorAll("#page1 button")[1].innerText = "🎯 游戏中心";
+        document.querySelectorAll("#page1 button")[2].innerText = "🏆 查看排行榜";
+        document.getElementById("contact").innerHTML = `
+          联系我们：<br/>
+          Telegram：@kkGitHubBot<br/>
+          频道链接：<a href="https://t.me/chiances" target="_blank">https://t.me/chiances</a>
+        `;
+        document.querySelector("#page2 h2").innerText = "游戏中心 - 第二页内容";
+        document.querySelector("#page2 p").innerText = "这里是网页的第二页，你可以放更多游戏相关内容或介绍。";
+        document.querySelector("#page2 button").innerText = "⬅ 返回首页";
+      }
+    }
+
+    function showPage(num) {
+      document.querySelectorAll(".page").forEach(page => page.classList.remove("active"));
+      document.getElementById("page" + num).classList.add("active");
+    }
+  </script>
+</body>
+</html>
